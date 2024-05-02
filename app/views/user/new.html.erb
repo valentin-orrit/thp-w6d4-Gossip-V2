@@ -28,6 +28,10 @@
         <%= label_tag :age, "Age" %>
         <%= text_field_tag 'user[age]', nil, class: 'form-control' %>
       </div>
+      <div class="form-group">
+        <%= label_tag :city_id, "City-ID" %>
+        <%= text_field_tag 'user[city_id]', nil, class: 'form-control' %>
+      </div>
 
       <div class="form-group">
         <%= label_tag :password, "Password" %>
@@ -35,7 +39,7 @@
       </div>
 
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <%= submit_tag "Sign Up", class: 'btn btn-primary' %>
+      <%= submit_tag "Sign Up", class: 'btn btn-dark' %>
     <% end %>
   </div>
 

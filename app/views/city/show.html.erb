@@ -1,20 +1,25 @@
-<h1>City#show</h1>
-<p>Find me in app/views/cities/show.html.erb</p>
-<div class="container mt-5">
-  <div class="row">
-    <% @gossips.each do |gossip| %>
-      <div class="col-md-3 mb-3">
-        <div class="card">
-          <div class="card-header">Gossip n°<%= gossip.id %></div>
-          <div class="card-body">
-            <h5 class="card-title"><%= gossip.title %></h5>
-            <p class="card-text"><i>Created by:</i> <%= link_to gossip.user.first_name, user_path(gossip.user)%></p>
-            <!--<p><a href="/gossip/<%=gossip.id%>" class="btn btn-dark">Voir le potin</a></p>-->
-            <p class="btn btn-light"><%= link_to "Learn More", gossip_path(gossip)%></p>
-            <!-- You can add more content here if needed -->
+<!DOCTYPE html>
+<html>
+<body>
+<h1><%= @city.name %></h1>
+
+<h3>Here are all the gossips from <%= @city.name %>: </h3>
+
+  <div class="container mt-5">
+    <div class="row">
+      <% @gossips.each do |gossip| %>
+        <div class="col-md-3 mb-3">
+          <div class="card">
+            <div class="card-header bg-secondary text-dark">Gossip n°<%= gossip.id %></div>
+            <div class="card-body">
+              <h5 class="card-title"><%= gossip.title %></h5>
+              <p class="card-text"><i>Created by:</i> <%= link_to gossip.user.first_name, user_path(gossip.user)%></p>
+              <p class="btn btn-light"><%= link_to "Learn More", gossip_path(gossip)%></p>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+      <% end %>
+    </div>
+
+</body>
+</html>

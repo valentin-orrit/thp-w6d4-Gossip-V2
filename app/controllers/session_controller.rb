@@ -9,7 +9,6 @@ class SessionController < ApplicationController
         session[:user_id] = @user.id
         redirect_to root_path
         flash[:success] = "Welcome #{@user.first_name}!!"
-        # puts User.find(session[:user_id])
     else
       puts params[:password]
       puts "$" * 50
@@ -17,6 +16,11 @@ class SessionController < ApplicationController
       flash[:danger] = "Wrong email or password"
     end
   end
+
+  def delete
+    session.delete(:user_id)
+    redirect_to root_path
+  end  
 
   private
   
