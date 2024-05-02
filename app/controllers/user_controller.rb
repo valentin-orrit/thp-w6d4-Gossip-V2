@@ -9,8 +9,10 @@ class UserController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_path
+      flash[:success] = "Welcome #{@user.first_name}!!"
     else
-      render :new
+      redirect_to "/user/new"
+          flash[:danger] = "Wrong email or password"
     end
   end
 
@@ -21,6 +23,6 @@ class UserController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password_digest)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :age)
   end
 end

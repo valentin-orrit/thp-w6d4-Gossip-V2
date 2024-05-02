@@ -9,16 +9,13 @@
     <%= flash[:success] %>
   </div>
 <% end %>
-<div class="jumbotron">
-  <h1 class="display-4">Gossip Project</h1>
-  <p class="lead">Ceci est une réplique du projet de Zuckerberg avant Facebook. C'est le même avec exactement 20 ans de retard.</p>
-  <hr class="my-4">
-  <p>100% des étudiant THP utilisent ce site:</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="https://chat.openai.com/" role="button">Learn more</a>
-  </p>
-</div>
-  <h1>The Gossip Project day3 v3</h1>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container" style="height: 200px;">
+      <h1 class="display-4, text-warning-emphasis, text-light">The Gossip Project</h1>
+      <br>
+      <%= link_to "Create a New Gossip", new_gossip_path , class:"btn btn-dark" %> 
+    </div>
+  </div>
 <!-- Container for cards with increased top margin -->
 <div class="container mt-5">
   <div class="row">
