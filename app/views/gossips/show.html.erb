@@ -17,10 +17,12 @@
             <p><strong>A dit :</strong> "<%= @gossip.title %> <%= @gossip.description %>"</p>
             <p><strong>Author :</strong> <%= link_to @gossip.user.first_name, user_path(@gossip.user) %></p>
             <p><strong>Author's City :</strong> <%= link_to @gossip.user.city.name, city_path(@gossip.user.city) %></p>
-            <%= link_to "Edit", edit_gossip_path(@gossip), class: "btn btn-dark mr-2" %>
-            <%= link_to "Supprimer", gossip_path(@gossip), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-danger" %>
+            <%= link_to "Edit", edit_gossip_path(@gossip), class: "btn btn-outline-dark mr-2" %>
+            <%= link_to "Supprimer", gossip_path(@gossip), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-outline-danger mr-2" %>
+            <%= link_to "Commenter", new_gossip_comment_path(@gossip), class: "btn btn-outline-dark" %>
           </div>
         </div>
+        
         <div class="mt-4">
           <h3>Comments</h3>
           <% @comments.each do |comment| %>
@@ -29,6 +31,7 @@
               <div class="card-body">
                 <h5 class="card-title"><%= comment.content %></h5>
                 <p class="card-text"><i>Created by:</i> <%= link_to comment.user.first_name, user_path(comment.user) %></p>
+                <%= link_to "Edit", edit_gossip_comment_path(@gossip, comment), class: "btn btn-outline-dark mr-2" %>
               </div>
             </div>
           <% end %>

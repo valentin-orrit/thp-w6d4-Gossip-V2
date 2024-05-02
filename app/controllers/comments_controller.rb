@@ -12,38 +12,41 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
+    @gossip = Gossip.find(params[:gossip_id])
     @comment = Comment.new
   end
 
   # GET /comments/1/edit
   def edit
+    @comment = Comment.find(params[:id])
+    
   end
 
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      redirect_to gossips_path, notice: 'Gossip créé avec succès!'
+      flash[:success] = "C'EST UN SUCCES!BRAVO!" #pour afficher le bandeau alerte (Voir html new)
+    else
+      render :new
+      flash[:danger] = "C'EST FOIRE" #pour afficher le bandeau alerte (Voir html index)
     end
   end
+    
+  
 
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    @comment= Comment.find(params[:id])
+       
+    if @comment.update(comment_params)
+      redirect_to gossips_path, notice: 'Comment updated successfully!'
+      flash[:success] = "C'EST UN SUCCES!BRAVO!" #pour afficher le bandeau alerte (Voir html new)
+    else
+      render :edit
+      flash[:danger] = "C'EST FOIRE" #pour afficher le bandeau alerte (Voir html index)
     end
   end
 

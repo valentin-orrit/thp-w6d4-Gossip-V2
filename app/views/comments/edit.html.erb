@@ -1,10 +1,11 @@
 <h1>Editing comment</h1>
-
-<%= render "form", comment: @comment %>
-
-<br>
-
-<div>
-  <%= link_to "Show this comment", @comment %> |
-  <%= link_to "Back to comments", comments_path %>
+<div class="container mt-5">
+  <h1 class="mb-4">Éditer le Gossip</h1>
+  <%= form_tag gossip_comment_path(@comment), method: :patch do %>
+    <div class="form-group">
+      <%= label_tag :title, "Titre du Gossip" %>
+      <%= text_field_tag 'comment[content]', @comment.content, class: 'form-control' %>
+    </div>
+    <%= submit_tag "Éditer le commentaire", class: 'btn btn-primary' %>
+  <% end %>
 </div>

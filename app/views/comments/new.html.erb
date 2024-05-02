@@ -1,9 +1,19 @@
-<h1>New comment</h1>
-
-<%= render "form", comment: @comment %>
-
-<br>
-
-<div>
-  <%= link_to "Back to comments", comments_path %>
-</div>
+<body>
+  <% if flash[:danger] %>
+    <div class="alert alert-danger">
+      <%= flash[:danger] %>
+    </div>
+  <% end %>
+ <%= form_tag gossip_comments_path(@comment) do %>
+  <div class="form-group">
+    <%= label_tag :user_id, "user_id" %>
+    <%= text_field_tag 'comment[user_id]', nil, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :content, "Contenu du Commentaire" %>
+    <%= text_area_tag 'comment[content]', nil, class: 'form-control' %>
+  </div>
+  <%= hidden_field_tag 'comment[gossip_id]', @gossip.id %>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <%= submit_tag "Commenter", class: 'btn btn-primary' %>
+<% end %>

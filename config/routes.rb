@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :gossips do
-  resources :comment 
+  resources :comments 
   end
   
   resources :team, only: [:index]
