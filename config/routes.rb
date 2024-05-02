@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :gossips do
   resources :comments 
   end
+
+  resources :session, only: [:new, :create, :destroy]
   
   resources :team, only: [:index]
   resources :contact, only: [:index]

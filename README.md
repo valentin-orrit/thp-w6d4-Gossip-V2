@@ -1,6 +1,7 @@
 # README
 
 A very beautiful gossip website...
+rails db:reset ultra important
 
 * Ruby version 3.2 / Rails version 7.1
 
