@@ -34,13 +34,13 @@
           <%= link_to "Contact", contact_index_path, class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Login", new_session_path, class:"nav-link" %>
+          <button class="btn btn-outline-primary my-2 mx-1 my-sm-0"><%= link_to "Login", new_session_path %></button>
         </li>
         <li class="nav-item">
-          <%= link_to "Logout", session_path(session.id), class:"nav-link", method: :delete %>
+          <button class="btn btn-outline-danger my-2  mx-1 my-sm-0"><%= link_to "Log Out", session_path(session.id), data: { turbo_method: :delete } %></button>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign Up", new_user_path, class:"nav-link" %>
+          <button class="btn btn-outline-success my-2 mx-1 my-sm-0"><%= link_to "Sign Up", new_user_path %></button>
         </li>
       </ul>
     </div>
